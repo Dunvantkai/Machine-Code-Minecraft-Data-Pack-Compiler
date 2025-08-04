@@ -46,7 +46,7 @@ set /a pnum=0
 for /f "usebackq delims=" %%A in ("..\..\..\..\%RendCom%") do call :process_line "%%A"
 
 pause
-exit /b
+goto END
 
 :process_line
 set "line=%~1"
@@ -71,15 +71,14 @@ if "!char!"=="1" (
 set /a pos+=1
 goto char_loop
 
-:end_loop
-echo /say Finshed > "%BaseName%.mcfunction"
+:END
+echo /say Finshed >> "%BaseName%.mcfunction"
 echo Done processing.
 cd..
 cd..
 cd..
 cd..
 cd..
-
 pause
 Goto RESTART
 
