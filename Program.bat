@@ -44,10 +44,7 @@ set "red= ~ ~ minecraft:redstone_block"
 set /a num=2
 set /a pnum=0
 for /f "usebackq delims=" %%A in ("..\..\..\..\%RendCom%") do call :process_line "%%A"
-
-pause
 goto END
-
 :process_line
 set "line=%~1"
 echo Line: !line!
