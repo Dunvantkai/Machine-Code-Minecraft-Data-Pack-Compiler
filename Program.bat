@@ -42,7 +42,6 @@ set "sot=setblock ~"
 set "glass= ~ ~ minecraft:glass"
 set "red= ~ ~ minecraft:redstone_block"
 set /a num=2
-set /a pnum=0
 for /f "usebackq delims=" %%A in ("..\..\..\..\%RendCom%") do call :process_line "%%A"
 goto END
 :process_line
