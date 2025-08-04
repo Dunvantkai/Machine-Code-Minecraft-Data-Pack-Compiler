@@ -37,47 +37,49 @@ mkdir myfunc
 cd myfunc
 mkdir functions
 cd functions
-echo say Start > runcommands.mcfunction"
-set "sot=setblock ~"
-set "glass= ~ ~ minecraft:glass"
-set "red= ~ ~ minecraft:redstone_block"
+echo /say Start > "%BaseName%.mcfunction"
+set "/setblock=set"
+set "glass=minecraft:glass"
+set "red=minecraft:redstone_block"
 set /a num=2
 set /a pnum=0
+
+
 for /f "usebackq delims=" %%A in ("..\..\..\..\%RendCom%") do call :process_line "%%A"
-goto END
+
+pause
+exit /b
+
 :process_line
 set "line=%~1"
 echo Line: !line!
 set /a pos=0
+
 :char_loop
 set "char=!line:~%pos%,1!"
 if not defined char goto :eof
+if "!char!"=="0"(
+echo "set""num""glass" >> "%BaseName%.mcfunction"
+set /a pos+=1
+goto char_loop
+)
+if "!char!"=="1"(
+echo "set""num""red" >> "%BaseName%.mcfunction"
+set /a pos+=1
+goto char_loop
+)
+if !char!==" "(
+set /a pnum=pnum - 1
+set /a pos+=1
+goto char_loop
+)
+set /a num=num + 2
+set /a num=num - pnum
+echo Char at !pos!: !char!
 
-if "!char!"=="0" (
-    echo !sot!!num!!glass! >> "runcommands.mcfunction"
-    set /a num=num + 2
-    set /a pos+=1
-    goto char_loop
-)
-if "!char!"=="1" (
-    echo !sot!!num!!red! >> "runcommands.mcfunction"
-    set /a num=num + 2
-    set /a pos+=1
-    goto char_loop
-)
 set /a pos+=1
 goto char_loop
 
-:END
-echo say Finshed >> "runcommands.mcfunction"
-echo Done processing.
-cd..
-cd..
-cd..
-cd..
-cd..
 pause
 Goto RESTART
-
-
 
