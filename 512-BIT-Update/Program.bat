@@ -41,7 +41,7 @@ echo say Start > runcommands.mcfunction"
 set "sot=setblock ~"
 set "squ= ~"
 set "glass= ~ minecraft:glass"
-set "red= ~ minecraft:redstone_block"
+set "red= ~ minecraft:redstone_wire"
 set /a x=2
 set /a y=0
 for /f "usebackq delims=" %%A in ("..\..\..\..\%RendCom%") do call :process_line "%%A"
