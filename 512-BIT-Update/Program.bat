@@ -43,7 +43,7 @@ set "squ= ~"
 set "glass= ~ minecraft:glass"
 set "red= ~ minecraft:redstone_block"
 set /a x=2
-set /a y=1
+set /a y=0
 for /f "usebackq delims=" %%A in ("..\..\..\..\%RendCom%") do call :process_line "%%A"
 goto END
 :process_line
@@ -56,21 +56,21 @@ if not defined char goto :eof
 
 if "!char!"=="0" (
     echo !sot!!x!!squ!!y!!glass! >> "runcommands.mcfunction"
-    set /a y=y + 2
+    set /a y=y - 2
     set /a pos+=1
-    if "!y!"=="17" (
+    if "!y!"=="-16" (
     set /a x=x + 2
-    set /a y=1
+    set /a y=0
 )
     goto char_loop
 )
 if "!char!"=="1" (
     echo !sot!!x!!squ!!y!!red! >> "runcommands.mcfunction"
-    set /a y=y + 2
+    set /a y=y - 2
     set /a pos+=1
-    if "!y!"=="17" (
+    if "!y!"=="-16" (
     set /a x=x + 2
-    set /a y=1
+    set /a y=0
 )
     goto char_loop
 )
