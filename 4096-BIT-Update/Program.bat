@@ -38,10 +38,10 @@ cd myfunc
 mkdir function
 cd function
 echo say Start > runcommands.mcfunction"
-set "sot=setblock ~"
 set "squ= ~"
-set "glass= ~ minecraft:glass"
-set "red= ~ minecraft:repeater[facing=east]"
+set "sot=setblock ~"
+set "glass= minecraft:glass"
+set "red= minecraft:repeater[facing=east]"
 set /a z=2
 set /a y=0
 set /a x=0
@@ -56,7 +56,7 @@ set "char=!line:~%pos%,1!"
 if not defined char goto :eof
 
 if "!char!"=="0" (
-    echo !sot!!z!!squ!!y!!glass! >> "runcommands.mcfunction"
+    echo !sot!!x!!squ!!y!!squ!!z!!glass! >> "runcommands.mcfunction"
     set /a y=y - 2
     set /a pos+=1
     if "!y!"=="-16" (
@@ -70,7 +70,7 @@ if "!char!"=="0" (
     goto char_loop
 )
 if "!char!"=="1" (
-    echo !sot!!z!!squ!!y!!red! >> "runcommands.mcfunction"
+    echo !sot!!x!!squ!!y!!squ!!z!!red! >> "runcommands.mcfunction"
     set /a y=y - 2
     set /a pos+=1
     if "!y!"=="-16" (
