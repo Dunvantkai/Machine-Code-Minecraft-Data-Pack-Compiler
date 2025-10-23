@@ -76,6 +76,10 @@ if "!char!"=="1" (
     if "!y!"=="-16" (
     set /a z=z + 2
     set /a y=0
+    if "!z!"=="130" (
+    set /a z=2
+    set /a x=x + 7
+)
 )
     goto char_loop
 )
