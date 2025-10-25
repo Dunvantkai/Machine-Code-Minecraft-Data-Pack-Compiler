@@ -41,7 +41,7 @@ echo say Start > runcommands.mcfunction"
 set "squ= ~"
 set "sot=setblock ~"
 set "glass= minecraft:glass"
-set "red= minecraft:repeater[facing=east]"
+set "red= minecraft:repeater[facing=west]"
 set /a z=2
 set /a y=0
 set /a x=0
